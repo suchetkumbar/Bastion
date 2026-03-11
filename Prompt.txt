@@ -1,0 +1,91 @@
+I want an end-to-end, production-quality Privacy-Preserving Whistleblower demo (Anonymous Document Authenticator) implemented for development on Visual Studio Code running on Windows (WSL2 allowed). The whistleblower must prove a file was digitally signed by Company‑X and that the file contains the literal phrase Confidential: Toxic Waste without revealing the file contents or the whistleblower's identity or IP. Use ZK-SNARKs.
+
+Be an expert cryptography+ZK engineer and produce everything I need to build and run this on Windows/VSCode. Deliverables must include complete code, exact commands, and full explanations.
+
+Requirements (be thorough and explicit)
+
+High-level design: brief diagram/flow and explanation of threat model, assumptions, and tradeoffs.
+
+Two modes:
+
+Demo (recommended): a fully working prototype where Company-X issues a signature the circuit can verify (use circuits/libraries that run in circom / snarkjs ecosystem — eddsa on babyjub + Poseidon, Merkle tree on Poseidon, Groth16).
+
+Notes for real-world adaptation: how to adapt to real company certificates (ECDSA/RSA) and production constraints (bridging ECDSA→ZK or using on-chain verifiers or hybrid architectures).
+
+Concrete choices: explain why you chose specific primitives (Poseidon vs SHA, eddsa babyjub vs ECDSA), and state performance/size/complexity cost.
+
+Full environment & install guide for Windows + VSCode (recommend WSL2), including Node version, snarkjs, circom, circomlibjs, and any Rust/build steps. Provide PowerShell and WSL commands. Include recommended VSCode extensions and settings for WSL development.
+
+Project layout: list every file to create with exact file paths and contents. Use realistic filenames and clear directory structure.
+
+Circom circuit(s):
+
+Circuit that verifies an eddsa signature over the Merkle root of a poseidon-hashed Merkle tree of file chunks.
+
+Circuit verifies a Merkle inclusion proof of a single chunk.
+
+Circuit verifies that the revealed chunk (private witness) contains the exact substring Confidential: Toxic Waste at some index (do not hard-code chunk index — allow variable index as private witness). The phrase Confidential: Toxic Waste is public input to the circuit.
+
+Use Poseidon hash and circomlib eddsa primitives (or explain alternatives).
+
+Keep circuits as efficient as reasonable (explain constraints & how to reduce proving cost).
+
+JS / Node tooling:
+
+Script to chunk a file, compute Poseidon hashes of chunks, build Merkle tree, compute Merkle root.
+
+Script to generate a Company-X eddsa keypair (babyjub), sign the Merkle root (simulate company signing).
+
+Script for the whistleblower: given the signed Merkle root and the file, locate a chunk which contains the phrase, build the Merkle inclusion proof, prepare the private witness, compute the witness and generate a Groth16 proof and public signals using snarkjs.
+
+Script to verify the proof locally (snarkjs verify) and show the public signals (public Merkle root, phrase, signer public key, signature).
+
+Optional: generate a Solidity verifier contract (via snarkjs) and show how to call it (Truffle/Hardhat example).
+
+All build/test/run commands: include WSL/PowerShell commands to run the full flow end-to-end with a sample file (include a sample file content that contains the phrase in one chunk), and show expected outputs (proof verification OK).
+
+Complete code blocks for every file (circuits, JS, package.json, helper scripts). Use no placeholders — give runnable code that I can paste and run as-is (aside from installing dependencies).
+
+Security & privacy analysis:
+
+Explain exactly what is revealed by the public signals.
+
+Explain attack surface: file re-use, metadata leaks (file size, chunk boundaries, timing), how to reduce deanonymization risk.
+
+Explain limitations of verifying standard company certs and practical mitigations (e.g., company publishes an attestation key for ZK verification, or a notary signs a translation into babyjub).
+
+Performance & scalability:
+
+Rough proving time / proof size estimates for a file of 1 KB, 10 KB, 100 KB, using your chunk size.
+
+Suggestions to optimize: larger chunk sizes, aggregation, different proving systems (PLONK, Halo2), batching.
+
+Extras:
+
+Helpful debugging tips when witness generation or proof fails (how to inspect witness, use circom debug).
+
+Unit tests / example test vectors.
+
+A short README with step-by-step commands to reproduce everything.
+
+Implementation constraints & hints to follow exactly
+
+Use circom v2 and snarkjs (Groth16) for the main demo.
+
+Use Poseidon as the internal hash for the Merkle tree in the circuit (and use circomlibjs Poseidon in Node).
+
+Use eddsa (babyjub) for signature demonstration. For the "real-world adaptation" section, give two concrete patterns to handle ECDSA: (1) convert signatures to attestations over Poseidon root via a trusted bridge; (2) use an external verifier service / oracles / threshold signing that produce a ZK-friendly key (BLS).
+
+Chunking: make it easy to change chunk size (default 64 bytes). Implement chunking and Merkle proof generation in Node.
+
+The phrase Confidential: Toxic Waste should be a public string input to the verifier; the circuit checks membership of that substring inside the secret chunk but must not reveal the chunk.
+
+The final answer must not assume any previous user input — produce everything in this single reply.
+
+For any native build steps on Windows that are fragile, prefer WSL2 Ubuntu commands but also include PowerShell alternatives when possible.
+
+When you produce the result, include a short "how to run in 5 commands" summary at the top and then the full files and explanations. Keep the code robust and annotated with comments.
+
+If anything is impossible (e.g., verifying a real ECDSA standard corporate certificate inside an efficient ZK circuit without a bridge), explicitly say why and provide practical, secure workarounds and code for those workarounds.
+
+Deliver now: full project files, the circom circuit(s), node scripts, build commands for Windows/WSL, tests, README, security analysis, and instructions for on-chain verification (Solidity verifier) as optional extra.

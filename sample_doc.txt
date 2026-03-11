@@ -1,0 +1,34 @@
+INTERNAL MEMORANDUM — STRICTLY PRIVATE
+
+From: Environmental Compliance Division
+To: Board of Directors
+Date: 2025-11-15
+Subject: Quarterly Environmental Impact Assessment — Site 7B
+
+Executive Summary:
+Following the routine inspection of Site 7B on November 3rd, our team
+identified several discrepancies in the reported waste disposal logs.
+
+The on-site measurements indicated elevated levels of industrial
+contaminants in the groundwater samples collected from wells GW-12
+through GW-18. These readings exceeded acceptable thresholds set by
+the Environmental Protection Agency (EPA) by a factor of 3.2x.
+
+Confidential: Toxic Waste disposal records for Q3 show unauthorized
+dumping of 14,200 gallons of industrial solvent into the unlined
+retention pond at coordinates 34.0522N, 118.2437W.
+
+The disposal was conducted between the hours of 0200-0400 to avoid
+detection by the regular monitoring staff. Manifests were falsified
+to show compliant disposal through licensed contractor EcoSafe Inc.
+
+Recommended Actions:
+1. Immediate containment of affected groundwater zones
+2. Engagement of independent remediation specialists
+3. Internal legal review before any regulatory disclosure
+
+This document is classified LEVEL-4 and must not be distributed
+outside the executive committee without written authorization from
+the Chief Compliance Officer.
+
+--- END OF MEMORANDUM ---

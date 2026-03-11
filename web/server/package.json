@@ -1,0 +1,14 @@
+{
+    "name": "whistleblower-zk-server",
+    "version": "2.0.0",
+    "description": "Express verifier backend — receives ZK proofs only, never documents",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.0",
+        "snarkjs": "^0.7.6"
+    }
+}

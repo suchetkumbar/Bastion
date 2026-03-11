@@ -1,0 +1,12 @@
+node_modules/
+build/
+keys/
+input/
+*.ptau
+web/client/dist/
+web/client/node_modules/
+web/server/node_modules/
+
+
+# memory
+memory/
