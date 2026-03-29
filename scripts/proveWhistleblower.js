@@ -22,7 +22,7 @@ const path = require("path");
 const snarkjs = require("snarkjs");
 
 const DEFAULT_PHRASE = "Confidential: Toxic Waste";
-const CIRCUIT_DEPTH = 10; // Must match circuit instantiation
+const CIRCUIT_DEPTH = 5; // Must match circuit instantiation
 
 async function main() {
     const phrase = process.argv[2] || DEFAULT_PHRASE;

@@ -110,39 +110,33 @@ template MerkleTreeChecker(depth) {
     signal input pathElements[depth];
     signal input pathIndices[depth];
 
-    // At each level, hash (left, right) where the order depends on pathIndex
+    // Pre-declare all signals as arrays (Circom requires template-level declarations)
     component hashers[depth];
-    component mux_left[depth];
-    component mux_right[depth];
-
     signal computed[depth + 1];
+    signal left_diff[depth];
+    signal right_diff[depth];
+    signal left[depth];
+    signal right[depth];
+
     computed[0] <== leaf;
 
     for (var i = 0; i < depth; i++) {
         // pathIndices[i] == 0 means current node is LEFT child
         // pathIndices[i] == 1 means current node is RIGHT child
-
-        // left = pathIndices[i] == 0 ? computed[i] : pathElements[i]
-        // right = pathIndices[i] == 0 ? pathElements[i] : computed[i]
-
+        //
         // Multiplexer: swap based on pathIndices[i]
         // left  = computed[i] + pathIndices[i] * (pathElements[i] - computed[i])
         // right = pathElements[i] + pathIndices[i] * (computed[i] - pathElements[i])
 
-        signal left_diff;
-        signal right_diff;
-        signal left;
-        signal right;
+        left_diff[i] <== pathElements[i] - computed[i];
+        left[i] <== computed[i] + pathIndices[i] * left_diff[i];
 
-        left_diff <== pathElements[i] - computed[i];
-        left <== computed[i] + pathIndices[i] * left_diff;
-
-        right_diff <== computed[i] - pathElements[i];
-        right <== pathElements[i] + pathIndices[i] * right_diff;
+        right_diff[i] <== computed[i] - pathElements[i];
+        right[i] <== pathElements[i] + pathIndices[i] * right_diff[i];
 
         hashers[i] = Poseidon(2);
-        hashers[i].inputs[0] <== left;
-        hashers[i].inputs[1] <== right;
+        hashers[i].inputs[0] <== left[i];
+        hashers[i].inputs[1] <== right[i];
 
         computed[i + 1] <== hashers[i].out;
     }
@@ -162,7 +156,7 @@ template MerkleTreeChecker(depth) {
 // Parameters:
 //   N = chunk size in bytes (default: 64)
 //   M = phrase length in bytes (default: 25 for "Confidential: Toxic Waste")
-//   DEPTH = Merkle tree depth (default: 10, supports up to 1024 chunks)
+//   DEPTH = Merkle tree depth (default: 5, supports up to 32 chunks)
 //   ENABLE_EDDSA = 1 to include signature verification, 0 to skip
 // ============================================================================
 template Whistleblower(N, M, DEPTH, ENABLE_EDDSA) {
@@ -236,7 +230,8 @@ template Whistleblower(N, M, DEPTH, ENABLE_EDDSA) {
 // ============================================================================
 // INSTANTIATION
 // N=64 bytes per chunk, M=25 bytes for "Confidential: Toxic Waste"
-// DEPTH=10 supports up to 1024 chunks (~64KB file)
+// DEPTH=5 supports up to 32 chunks (~2KB file)
 // ENABLE_EDDSA=0 for demo mode (set to 1 for full signature verification)
 // ============================================================================
-component main {public [root, targetPhrase]} = Whistleblower(64, 25, 10, 0);
+component main {public [root, targetPhrase]} = Whistleblower(64, 25, 5, 0);
+
