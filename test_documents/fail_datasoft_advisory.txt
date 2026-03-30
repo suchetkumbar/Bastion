@@ -1,0 +1,36 @@
+DATASOFT INC - SECURITY ADVISORY
+
+Priority: HIGH
+Date: 2025-11-01
+From: Chief Information Security Officer
+To: All Engineering Staff
+
+Incident Summary:
+A data breach was detected on October
+28th involving unauthorized access to
+customer payment records in Database
+Cluster DB-PROD-07.
+
+Affected Records: approximately 2.1M
+customer accounts across NA region.
+
+Root Cause: An unpatched vulnerability
+in the Apache Struts framework (CVE-
+2025-8832) was exploited by an unknown
+threat actor via our public API gateway.
+
+Immediate Actions Taken:
+1. Affected systems isolated at 02:14
+2. Forensic imaging completed at 06:30
+3. Law enforcement notified (FBI ref#)
+4. External IR firm Mandiant engaged
+
+Note: This breach does NOT involve any
+environmental or chemical data. All of
+our facilities are fully compliant and
+no hazardous materials are on premises.
+
+DO NOT discuss this with external media
+until Legal has prepared the disclosure.
+
+--- END OF ADVISORY ---

@@ -1,0 +1,26 @@
+INTERNAL MEMO - ACME CHEMICAL CORPORATION
+
+From: Plant Operations Manager
+To: VP Environmental Affairs
+Date: 2025-09-22
+Subject: Quarterly Waste Report Q3
+
+Summary of operations at Plant Alpha:
+Production volume increased by 12% this
+quarter. Waste handling protocols were
+updated per EPA guideline EPA-7721-B.
+
+        Confidential: Toxic Waste generated at
+Plant Alpha exceeded disposal capacity.
+Emergency storage in Tank Farm B has
+reached 87% of maximum rated capacity.
+Immediate offsite transfer is required.
+
+Lab analysis confirmed Class 4 hazardous
+materials in primary effluent stream at
+concentration 4.8x above RCRA limits.
+
+Recommended: Engage EPA-certified waste
+hauler within 72 hours to prevent spill.
+
+--- END OF MEMO ---

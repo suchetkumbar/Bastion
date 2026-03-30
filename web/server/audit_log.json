@@ -1,0 +1,47 @@
+[
+  {
+    "proofFingerprint": "dc2156221711d736",
+    "result": "VALID",
+    "registryCheck": "PASSED",
+    "phraseDetected": "Confidential: Toxic Waste",
+    "timestamp": "2026-03-29T18:51:22.214Z",
+    "submitterIdentity": "NOT_RECORDED",
+    "submitterIP": "NOT_RECORDED"
+  },
+  {
+    "proofFingerprint": "c58edcc3f43a1d68",
+    "result": "VALID",
+    "registryCheck": "PASSED",
+    "phraseDetected": "Confidential: Toxic Waste",
+    "timestamp": "2026-03-29T18:53:04.323Z",
+    "submitterIdentity": "NOT_RECORDED",
+    "submitterIP": "NOT_RECORDED"
+  },
+  {
+    "proofFingerprint": "5374aaf993deac3a",
+    "result": "VALID",
+    "registryCheck": "PASSED",
+    "phraseDetected": "Confidential: Toxic Waste",
+    "timestamp": "2026-03-29T19:11:27.124Z",
+    "submitterIdentity": "NOT_RECORDED",
+    "submitterIP": "NOT_RECORDED"
+  },
+  {
+    "proofFingerprint": "df84bdb74ad84ec2",
+    "result": "VALID",
+    "registryCheck": "PASSED",
+    "phraseDetected": "Confidential: Toxic Waste",
+    "timestamp": "2026-03-29T19:11:43.037Z",
+    "submitterIdentity": "NOT_RECORDED",
+    "submitterIP": "NOT_RECORDED"
+  },
+  {
+    "proofFingerprint": "cbcbe9be0e839e98",
+    "result": "VALID",
+    "registryCheck": "PASSED",
+    "phraseDetected": "Confidential: Toxic Waste",
+    "timestamp": "2026-03-29T19:31:35.132Z",
+    "submitterIdentity": "NOT_RECORDED",
+    "submitterIP": "NOT_RECORDED"
+  }
+]
